@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSystem.Web", "EmailSystem.Web\EmailSystem.Web.csproj", "{B77A1D29-1C85-4EEE-8978-86D556D4351C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSystem.Web", "EmailSystem.Web\EmailSystem.Web.csproj", "{B77A1D29-1C85-4EEE-8978-86D556D4351C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSystem.DL", "EmailSystem.DL\EmailSystem.DL.csproj", "{0B804987-FE4F-4670-878E-944E32E48E62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSystem.DL", "EmailSystem.DL\EmailSystem.DL.csproj", "{0B804987-FE4F-4670-878E-944E32E48E62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

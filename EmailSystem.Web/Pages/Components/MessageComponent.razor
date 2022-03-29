@@ -1,0 +1,67 @@
+﻿<div class="modal @ModalClass" tabindex="-1" role="dialog" style="display:@ModalDisplay">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <div class="row">
+                    <div class="col-12">
+                        <span class="text-muted">From:</span>email@gmail.com
+                    </div>
+                    <div class="col-12">
+                        <span class="text-muted">Too:</span>email@gmail.com
+                    </div>
+                </div>
+                @*<div class="row">
+                        <div class="col-12">
+                            <p><span class="text-muted">Too:</span>email@gmail.com</p>
+                        </div>
+                    </div>*@
+                <button type="button" class="btn btn-outline-primary" data-dismiss="modal" @onclick="() => Close()" aria-label="Send">
+                    <span class="oi oi-arrow-right"> Send</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <EditForm Model="text">
+                    <InputTextArea @bind-Value="text" />
+                </EditForm>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Send</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" @onclick="() => Close()">Discard</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@if (ShowBackdrop)
+{
+    <div class="modal-backdrop fade show"></div>
+}
+
+
+@code {
+
+
+    //public Guid Guid = Guid.NewGuid();
+    public string ModalDisplay = "none;";
+    public string ModalClass = "";
+    public bool ShowBackdrop = false;
+    private string text = "";
+
+    public void Open()
+    {
+        ModalDisplay = "block;";
+        ModalClass = "Show";
+        ShowBackdrop = true;
+        StateHasChanged();
+    }
+
+    public void Close()
+    {
+        ModalDisplay = "none";
+        ModalClass = "";
+        ShowBackdrop = false;
+        StateHasChanged();
+    }
+}
