@@ -1,5 +1,4 @@
 using EmailSystem.DL.Extensions;
-using EmailSystem.Web.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,7 +24,6 @@ namespace EmailSystem.Web
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddAppContext(Configuration.GetConnectionString("DefaultConnection"));
-            services.AddSingleton<WeatherForecastService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
