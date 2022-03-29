@@ -1,19 +1,20 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Authorization;
+﻿using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EmailSystem.Web.Areas.Identity
+namespace EmailSystem.DL.Identity
 {
     public class RevalidatingIdentityAuthenticationStateProvider<TUser>
-        : RevalidatingServerAuthenticationStateProvider where TUser : class
+       : RevalidatingServerAuthenticationStateProvider where TUser : class
     {
         private readonly IServiceScopeFactory _scopeFactory;
         private readonly IdentityOptions _options;
