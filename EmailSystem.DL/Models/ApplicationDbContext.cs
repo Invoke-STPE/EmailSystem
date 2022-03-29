@@ -12,8 +12,13 @@ namespace EmailSystem.DL.Models
     /// </summary>
     internal class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options){}
+
+        protected override void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
+            // Instead of having all your custom configuration here, we split it out in configurations files individual for each model.
+            builder.ApplyConfigurationsFromAssembly(assembly: typeof(ApplicationDbContext).Assembly);
         }
     }
 }
