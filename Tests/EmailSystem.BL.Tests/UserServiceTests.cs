@@ -58,12 +58,16 @@ namespace EmailSystem.BL.Tests
             Assert.IsNull(applicationUser);
         }
 
-        [TestMethod]
-        public void GetSentMails_ReturnsAllSentMails()
+        [DataTestMethod]
+        [DataRow("Steven@email.com", 2)]
+        [DataRow("steven@email.com", 2)]
+        [DataRow("Mike@email.com", 1)]
+        [DataRow("mike@email.com", 1) ]
+        public void GetSentMails_ReturnsAllSentMails(string email, int expectedValue)
         {
-            int expected = 2;
+            int expected = expectedValue;
 
-            List<ApplicationUser> emails = _userService.GetSentMails("steven@email.com").ToList();
+            List<EmailModel> emails = _userService.GetSentMails(email).ToList();
 
             int actual = emails.Count;
             Assert.AreEqual(expected, actual);

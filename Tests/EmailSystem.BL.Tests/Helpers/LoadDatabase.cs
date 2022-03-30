@@ -32,45 +32,72 @@ namespace EmailSystem.BL.Tests.Helpers
             {
                 Email = "Steven@email.com",
                 FirstName = "Steven",
-                LastName = "Mike",
-
+                LastName = "Pedersen",
+                SentEmails = new List<EmailModel>()
+                {
+                     new EmailModel()
+                        {
+                            Message = "This is a test message sent to Mike",
+                            //Sender = userSteven,
+                            //Recipient = userMike,
+                            SentDate = DateTime.Now
+                        },
+                     new EmailModel()
+                        {
+                            Message = "This is a test message 2 sent to Mike",
+                            //Sender = userMike,
+                            //Recipient = userSteven,
+                            SentDate = DateTime.Now
+                        }
+        }
             };
             ApplicationUser userMike = new ApplicationUser()
             {
                 Email = "Mike@email.com",
                 FirstName = "Mike",
                 LastName = "Brandt",
+                SentEmails = new List<EmailModel>()
+                {
+                    new EmailModel()
+                    {
+                        Message = "This is a test message sent to Steven",
+                        //Sender = userMike,
+                        //Recipient = userSteven,
+                        SentDate = DateTime.Now
+                    }
+                }
             };
 
+            context.Users.AddRange(userSteven, userMike);
             //context.SaveChanges();
 
                 //ApplicationUser userSteven = context.Users.SingleOrDefault(u => u.Email == "Steven@email.com");
                 //ApplicationUser userMike = context.Users.SingleOrDefault(u => u.Email == "Mike@email.com");
 
 
-            EmailModel email1 = new EmailModel()
-            {
-                Message = "This is a test message sent to Mike",
-                Sender = userSteven,
-                Recipient = userMike,
-                SentDate = DateTime.Now
-            };
-            EmailModel email2 = new EmailModel()
-            {
-                Message = "This is a test message 2 sent to Mike",
-                Sender = userSteven,
-                Recipient = userMike,
-                SentDate = DateTime.Now
-            };
-            EmailModel email3 = new EmailModel()
-            {
-                Message = "This is a test message sent to Steven",
-                Sender = userMike,
-                Recipient = userSteven,
-                SentDate = DateTime.Now
-            };
+            //EmailModel email1 = new EmailModel()
+            //{
+            //    Message = "This is a test message sent to Mike",
+            //    Sender = userSteven,
+            //    Recipient = userMike,
+            //    SentDate = DateTime.Now
+            //};
+            //EmailModel email2 = new EmailModel()
+            //{
+            //    Message = "This is a test message 2 sent to Mike",
+            //    Sender = userSteven,
+            //    Recipient = userMike,
+            //    SentDate = DateTime.Now
+            //};
+            //EmailModel email3 = new EmailModel()
+            //{
+            //    Message = "This is a test message sent to Steven",
+            //    Sender = userMike,
+            //    Recipient = userSteven,
+            //    SentDate = DateTime.Now
+            //};
 
-            context.Emails.AddRange(email1, email2, email3);
+            //context.Emails.AddRange(email1, email2, email3);
 
             context.SaveChanges();
 

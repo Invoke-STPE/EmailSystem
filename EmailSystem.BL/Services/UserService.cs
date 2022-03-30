@@ -21,10 +21,13 @@ namespace EmailSystem.BL.Services
             return _context.Users.SingleOrDefault(user => user.Email.ToLower() == email.ToLower());
         }
 
-        public IList<ApplicationUser> GetSentMails(string email)
+        public IList<EmailModel> GetSentMails(string email)
         {
             ApplicationUser user = Read(email);
-            return _context.Users.Include(user => user).ThenInclude(user => user.SentEmails).ToList();
+
+            //return _context.Users.Include(user => user).ThenInclude(user => user.SentEmails).ToList();
+            var Emails = _context.Users.Include(user => user.SentEmails).ToList();
+            return new List<EmailModel>();
         }
     }
 }
