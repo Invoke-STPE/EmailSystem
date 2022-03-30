@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 
 namespace EmailSystem.DL.Models
@@ -6,16 +7,14 @@ namespace EmailSystem.DL.Models
     /// <summary>
     /// Still need to create a config, initialize properties and so on
     /// </summary>
-    internal class UserModel
+    public class ApplicationUser : IdentityUser
     {
-        private string id;
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Email { get; set; }
-        public ICollection<EmailModel> Emails { get; set; }
-        public UserModel()
+        public ICollection<EmailModel> SentEmails { get; set; }
+        public ICollection<EmailModel> ReceivedEmails { get; set; }
+        public ApplicationUser()
         {
-            id = Guid.NewGuid().ToString("D");
         }
     }
 }
