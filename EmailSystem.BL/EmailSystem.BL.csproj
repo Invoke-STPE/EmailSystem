@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EmailSystem.DL\EmailSystem.DL.csproj" />
+  </ItemGroup>
+
 </Project>

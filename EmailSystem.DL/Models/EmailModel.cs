@@ -19,5 +19,22 @@ namespace EmailSystem.DL.Models
         {
             id = Guid.NewGuid().ToString("D");
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is EmailModel model &&
+                   id == model.id &&
+                   SenderID == model.SenderID &&
+                   EqualityComparer<ApplicationUser>.Default.Equals(Sender, model.Sender) &&
+                   RecipientId == model.RecipientId &&
+                   EqualityComparer<ApplicationUser>.Default.Equals(Recipient, model.Recipient) &&
+                   Message == model.Message;
+                   //SentDate == model.SentDate;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(id, SenderID, Sender, RecipientId, Recipient, Message, SentDate);
+        }
     }
 }

@@ -10,8 +10,9 @@ namespace EmailSystem.DL.Models
     /// <summary>
     /// Need to configure my AppContext to use default Identity user
     /// </summary>
-    internal class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<EmailModel> Emails { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options){}
 
         protected override void OnModelCreating(ModelBuilder builder)
