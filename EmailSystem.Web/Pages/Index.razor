@@ -1,11 +1,40 @@
 ﻿@page "/"
 
-<div class="row">
-    <div class="col-3">
-        <EmailOverviewComponent />
-    </div>
-    <div class="col-9 p-5">
-        <EmailMessageComponent />
-    </div>
-</div>
+@using Microsoft.AspNetCore.Identity
+@using EmailSystem.Domain.Models
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject UserManager<ApplicationUser> _userManager
+
+<AuthorizeView>
+    <Authorized>
+        <div class="row">
+            <div class="col-3">
+                <EmailOverviewComponent UserEmail="@email" />
+            </div>
+            <div class="col-9 p-5">
+                <EmailDetailComponent />
+            </div>
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <div class="justify-content-center align-content-center">
+            <h1 class="text-center display-1 text-danger">Please login to view your emails.</h1>
+        </div>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private string email = "";
+    protected async override Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        ApplicationUser user = null;
+        if (authState.User.Identity.IsAuthenticated)
+        {
+            user = await _userManager.FindByNameAsync(authState.User.Identity.Name);
+            email = user.Email;
+        }
+    }
+}
 

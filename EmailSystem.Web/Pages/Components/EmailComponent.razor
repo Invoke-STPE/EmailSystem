@@ -1,8 +1,15 @@
-﻿<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+﻿@using EmailSystem.Domain.Models
+<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">Recipent</h5>
-        <small>3 days ago</small>
+        <h5 class="mb-1">@Email.Sender.Email</h5>
+        <small>@Email.SentDate</small>
     </div>
     <p class="mb-1">Email Subject</p>
-    <small>Email Teaser text</small>
+    <small>@Email.Message.Substring(0, 10)</small>
 </a>
+
+
+@code {
+    [Parameter]
+    public EmailModel Email { get; set; }
+}

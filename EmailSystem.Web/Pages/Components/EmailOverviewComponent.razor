@@ -1,6 +1,29 @@
-﻿<div class="list-group">
-    @for (int i = 0; i < 3; i++)
+﻿@using EmailSystem.Domain.Models
+@using EmailSystem.BL.Services
+@inject IUserService _userService
+<div class="list-group">
+    @if (_emails.Count > 0)
     {
-        <EmailComponent />
-    }
+        @foreach (EmailModel email in _emails)
+        {
+            <EmailComponent  />
+        }
+    } else { <p class="text-muted">No Emails to display</p>}
 </div>
+
+@code {
+    [Parameter]
+    public string UserEmail { get; set; }
+    private ICollection<EmailModel> _emails = new List<EmailModel>();
+
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    _emails = await _userService.GetReceivedMails(UserEmail);
+    //    return base.OnInitializedAsync();
+    //}
+    protected override async  Task OnInitializedAsync()
+    {
+        _emails = await _userService.GetReceivedMails(UserEmail);
+    }
+
+}

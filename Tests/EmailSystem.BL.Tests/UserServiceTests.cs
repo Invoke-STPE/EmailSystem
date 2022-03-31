@@ -94,11 +94,11 @@ namespace EmailSystem.BL.Tests
         [DataRow("steven@email.com", 1)]
         [DataRow("Mike@email.com", 2)]
         [DataRow("mike@email.com", 2)]
-        public void GetReceivedMails_ReturnsAllReceivedMails(string email, int expectedValue)
+        public async void GetReceivedMails_ReturnsAllReceivedMails(string email, int expectedValue)
         {
             int expected = expectedValue;
 
-            List<EmailModel> emails = _userService.GetReceivedMails(email).ToList();
+            ICollection<EmailModel> emails = await _userService.GetReceivedMails(email);
 
             int actual = emails.Count;
             Assert.AreEqual(expected, actual);
