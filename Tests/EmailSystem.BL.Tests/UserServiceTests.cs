@@ -78,13 +78,44 @@ namespace EmailSystem.BL.Tests
         [DataRow("Mke@email.com")]
         [DataRow("Mike@gmail.com")]
         [DataRow("Steven@gmail.com")]
-        public void GetSentMails_InvalidEmail_ReturnsNull(string email)
+        public void GetSentMails_InvalidEmail_ReturnsZero(string email)
         {
             int expected = 0;
 
             List<EmailModel> emails = _userService.GetSentMails(email).ToList();
 
-            int actual = 0;
+            int actual = emails.Count;
+            Assert.AreEqual(expected, actual);
+        }
+
+
+        [DataTestMethod]
+        [DataRow("Steven@email.com", 1)]
+        [DataRow("steven@email.com", 1)]
+        [DataRow("Mike@email.com", 2)]
+        [DataRow("mike@email.com", 2)]
+        public void GetReceivedMails_ReturnsAllReceivedMails(string email, int expectedValue)
+        {
+            int expected = expectedValue;
+
+            List<EmailModel> emails = _userService.GetReceivedMails(email).ToList();
+
+            int actual = emails.Count;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [DataTestMethod]
+        [DataRow("Steen@email.com")]
+        [DataRow("Mke@email.com")]
+        [DataRow("Mike@gmail.com")]
+        [DataRow("Steven@gmail.com")]
+        public void GetReceivedMails_InvalidEmail_ReturnsZero(string email)
+        {
+            int expected = 0;
+
+            List<EmailModel> emails = _userService.GetSentMails(email).ToList();
+
+            int actual = emails.Count;
             Assert.AreEqual(expected, actual);
         }
 

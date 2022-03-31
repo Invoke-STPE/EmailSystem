@@ -24,13 +24,26 @@ namespace EmailSystem.BL.Services
         public ICollection<EmailModel> GetSentMails(string email)
         {
 
-            var emails = from user in _context.Users
+            var sentEmails = from user in _context.Users
                          .Where(user => user.Email.ToLower() == email.ToLower())
                          .Include(user => user.SentEmails)
                          from emailSent in user.SentEmails
                          select emailSent;
 
-            return emails.ToList();
+            return sentEmails.ToList();
+
+        }
+
+        public ICollection<EmailModel> GetReceivedMails(string email)
+        {
+
+            var receivedEmails = from user in _context.Users
+                         .Where(user => user.Email.ToLower() == email.ToLower())
+                         .Include(user => user.ReceivedEmails)
+                         from emailReceived in user.ReceivedEmails
+                         select emailReceived;
+
+            return receivedEmails.ToList();
 
         }
 
