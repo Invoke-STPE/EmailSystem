@@ -14,7 +14,7 @@ namespace EmailSystem.BL.Tests
     public class UserServiceTests
     {
         private ApplicationDbContext _context;
-        private UserService _userService;
+        private IUserService _userService;
         [TestInitialize]
         public void TestInitialize()
         {
@@ -119,5 +119,53 @@ namespace EmailSystem.BL.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        [DataTestMethod]
+        [DataRow("Steven@email.com", "Mike@email.com", 2)]
+        [DataRow("steven@email.com", "mike@email.com", 2)]
+        [DataRow("Mike@email.com", "Steven@email.com", 3)]
+        [DataRow("mike@email.com", "steven@email.com", 3)]
+        public void SendMail_ValidReceiver_ShouldAppendEmailToReceivedMail(string recipentEmail, string senderEmail, int expected)
+        {
+            EmailModel email = new EmailModel() { Message = $"This is a new mail sent to {recipentEmail}" };
+
+            _userService.SendEmail(senderEmail, recipentEmail, email);
+
+            var receivedEmails = from user in _context.Users
+                         .Where(user => user.Email.ToLower() == recipentEmail.ToLower())
+                         .Include(user => user.ReceivedEmails)
+                                 from emailReceived in user.ReceivedEmails
+                                 select emailReceived;
+
+            //var receivedEmails = _userService.GetReceivedMails(recipentEmail);
+
+            int actual = receivedEmails.ToList().Count;
+
+            Assert.AreEqual(expected, actual);
+
+        }
+        [DataTestMethod]
+        [DataRow("Steven@email.com", "Mike@email.com", 2)]
+        [DataRow("steven@email.com", "mike@email.com", 2)]
+        [DataRow("Mike@email.com", "Steven@email.com", 3)]
+        [DataRow("mike@email.com", "steven@email.com", 3)]
+        public void SendMail_ValidReceiver_ShouldAppendEmailToSentMail(string recipentEmail, string senderEmail, int expected)
+        {
+            EmailModel email = new EmailModel() { Message = $"This is a new mail sent to {recipentEmail}" };
+
+            _userService.SendEmail(senderEmail, recipentEmail, email);
+
+            var sentEmails = from user in _context.Users
+                         .Where(user => user.Email.ToLower() == senderEmail.ToLower())
+                         .Include(user => user.SentEmails)
+                                 from sentEmail in user.SentEmails
+                                 select sentEmail;
+
+            //var receivedEmails = _userService.GetReceivedMails(recipentEmail);
+
+            int actual = sentEmails.ToList().Count;
+
+            Assert.AreEqual(expected, actual);
+
+        }
     }
 }

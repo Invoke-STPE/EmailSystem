@@ -57,12 +57,12 @@ namespace EmailSystem.BL.Tests.Helpers
                     new EmailModel()
                      {
                             Message = "This is a test message sent to Mike",
-                            SentDate = DateTime.Now
+                            
                      },
                      new EmailModel()
                      {
                             Message = "This is a test message 2 sent to Mike",
-                            SentDate = DateTime.Now
+                            
                      }
                 }
             };

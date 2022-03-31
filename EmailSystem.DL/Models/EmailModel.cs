@@ -18,6 +18,7 @@ namespace EmailSystem.DL.Models
         public EmailModel()
         {
             id = Guid.NewGuid().ToString("D");
+            SentDate = DateTime.Now;
         }
 
         public override bool Equals(object obj)
