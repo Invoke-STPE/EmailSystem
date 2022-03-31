@@ -1,5 +1,6 @@
 ﻿using EmailSystem.DL.Identity;
 using EmailSystem.DL.Models;
+using EmailSystem.BL.Services;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -7,8 +8,9 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EmailSystem.Domain.Models;
 
-namespace EmailSystem.DL.Extensions
+namespace EmailSystem.BL.Extensions
 {
     public static class AppContextServices
     {
@@ -22,6 +24,7 @@ namespace EmailSystem.DL.Extensions
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<ApplicationUser>>();
+            services.AddTransient<IUserService, UserService>();
             return services;
         }
     }

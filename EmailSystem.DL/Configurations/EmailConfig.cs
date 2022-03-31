@@ -1,4 +1,4 @@
-﻿using EmailSystem.DL.Models;
+﻿using EmailSystem.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

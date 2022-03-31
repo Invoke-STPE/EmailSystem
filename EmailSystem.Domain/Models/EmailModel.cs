@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EmailSystem.DL.Models
+namespace EmailSystem.Domain.Models
 {
     public class EmailModel
     {

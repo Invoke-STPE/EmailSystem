@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EmailSystem.DL\EmailSystem.DL.csproj" />
-    <ProjectReference Include="..\EmailSystem.Domain\EmailSystem.Domain.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.23" />
   </ItemGroup>
 
 </Project>

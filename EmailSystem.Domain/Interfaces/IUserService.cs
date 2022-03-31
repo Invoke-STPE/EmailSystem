@@ -1,4 +1,4 @@
-﻿using EmailSystem.DL.Models;
+﻿using EmailSystem.Domain.Models;
 using System.Collections.Generic;
 
 namespace EmailSystem.BL.Services

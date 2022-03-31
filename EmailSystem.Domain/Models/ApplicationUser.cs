@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace EmailSystem.DL.Models
+namespace EmailSystem.Domain.Models
 {
     /// <summary>
     /// Still need to create a config, initialize properties and so on

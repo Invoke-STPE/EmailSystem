@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using EmailSystem.DL.Models;
 using Microsoft.EntityFrameworkCore;
 using EmailSystem.BL.Services;
 using EmailSystem.BL.Tests.Helpers;
 using System.Linq;
+using EmailSystem.Domain.Models;
 
 namespace EmailSystem.BL.Tests
 {

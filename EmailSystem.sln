@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSystem.Web", "EmailSys
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSystem.DL", "EmailSystem.DL\EmailSystem.DL.csproj", "{0B804987-FE4F-4670-878E-944E32E48E62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSystem.BL", "EmailSystem.BL\EmailSystem.BL.csproj", "{BA7FBCE4-3EE4-4FD4-A668-FBC2B63A4E39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSystem.BL", "EmailSystem.BL\EmailSystem.BL.csproj", "{BA7FBCE4-3EE4-4FD4-A668-FBC2B63A4E39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSystem.BL.Tests", "Tests\EmailSystem.BL.Tests\EmailSystem.BL.Tests.csproj", "{2983F964-4594-470A-BC52-FBB1FD4E52A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSystem.BL.Tests", "Tests\EmailSystem.BL.Tests\EmailSystem.BL.Tests.csproj", "{2983F964-4594-470A-BC52-FBB1FD4E52A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSystem.Domain", "EmailSystem.Domain\EmailSystem.Domain.csproj", "{A274F6A1-77EB-4A0A-B04F-366C6C7C1B44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{2983F964-4594-470A-BC52-FBB1FD4E52A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2983F964-4594-470A-BC52-FBB1FD4E52A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2983F964-4594-470A-BC52-FBB1FD4E52A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A274F6A1-77EB-4A0A-B04F-366C6C7C1B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A274F6A1-77EB-4A0A-B04F-366C6C7C1B44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A274F6A1-77EB-4A0A-B04F-366C6C7C1B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A274F6A1-77EB-4A0A-B04F-366C6C7C1B44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

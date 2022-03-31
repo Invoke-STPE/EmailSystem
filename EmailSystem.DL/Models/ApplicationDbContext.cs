@@ -1,19 +1,17 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using EmailSystem.Domain.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace EmailSystem.DL.Models
 {
     /// <summary>
     /// Need to configure my AppContext to use default Identity user
     /// </summary>
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
     {
         public DbSet<EmailModel> Emails { get; set; }
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options){}
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

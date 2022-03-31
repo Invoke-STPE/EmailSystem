@@ -1,4 +1,4 @@
-using EmailSystem.DL.Extensions;
+using EmailSystem.BL.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
