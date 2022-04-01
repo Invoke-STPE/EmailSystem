@@ -31,6 +31,7 @@ namespace EmailSystem.DL.Configurations
 
             // Configure Properties.
             modelBuilder.Property(email => email.Message).HasMaxLength(255);
+            modelBuilder.Property(email => email.Subject).HasMaxLength(20);
             modelBuilder.Property(email => email.SentDate).HasColumnType("date");
                 
         }
