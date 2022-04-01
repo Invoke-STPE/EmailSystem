@@ -28,12 +28,12 @@ namespace EmailSystem.Domain.Models
             {
                 return Message.Substring(0, 10);
             }
-            return "";
+            return Message;
         }
 
         public string GetFullName()
         {
-            return null;
+            return !string.IsNullOrWhiteSpace(Sender.LastName) ? $"{Sender.FirstName} {Sender.LastName}" : $"{Sender.FirstName}";
         }
 
         public override bool Equals(object obj)

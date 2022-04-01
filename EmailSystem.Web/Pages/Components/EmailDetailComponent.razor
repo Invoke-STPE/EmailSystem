@@ -3,31 +3,18 @@
     <h1 class="display-5">@Email.GetFullName()</h1>
 </div>
 <div class="row justify-content-between">
+        
     <div class="col-9">
-    <EmailSenderComponent />
+        <EmailSenderComponent />
     </div>
-   <div class="col-1">
-       <button class="btn btn-outline-primary" @onclick="() => MessageComponent.Open()"><span class="oi oi-arrow-left"> Reply</span></button>
-   </div>
+    <div class="col-1">
+        <button class="btn btn-outline-primary" @onclick="() => MessageComponent.Open()"><span class="oi oi-arrow-left"> Reply</span></button>
+    </div>
 </div>
 <hr />
 <div class="row mx-3">
     <div class="col-12">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Nulla id nunc nec arcu gravida ultrices eget et sapien. Duis malesuada aliquam dui, eu finibus mi condimentum non.
-        Proin ac mi fringilla nulla rutrum placerat. Quisque lobortis lacus ut libero gravida malesuada. Vestibulum quis erat mollis, porttitor nulla at, pulvinar nisi.
-        Aliquam eu nulla ut nulla viverra vestibulum id a lorem. Cras sollicitudin ut metus quis eleifend.
-        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed quis ipsum lobortis, imperdiet lacus at, mattis quam.
-        Nulla sit amet velit consequat, rhoncus libero ut, aliquet leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-        Sed gravida, est et condimentum ultricies, ex nisi volutpat lorem, non euismod felis mauris ut erat.
-        Proin sit amet diam et est egestas interdum. Proin ultrices magna ligula, eget varius leo vehicula nec.
-        Duis euismod dui risus, eu lacinia tellus porttitor non. Fusce vel gravida dui.
-
-        Pellentesque nisl erat, ornare non porta non, molestie in nibh.
-        Donec imperdiet nibh nec nisi tincidunt pulvinar. In tortor est, semper sit amet lacus vel, pretium venenatis turpis.
-        Phasellus arcu justo, interdum quis diam ac, commodo ullamcorper neque. Pellentesque placerat risus nec massa porta dignissim.
-        Nullam vel dui in risus rhoncus vehicula et ut erat. Aenean efficitur convallis ipsum et maximus. Proin ullamcorper dolor sed tempus consectetur.
-        In hac habitasse platea dictumst. Pellentesque pretium orci augue, bibendum convallis odio mollis eu. Praesent non fermentum erat, in volutpat ante. Cras varius tempor porta.
+        @Email.Message
     </div>
 </div>
 <MessageComponent @ref="MessageComponent" />

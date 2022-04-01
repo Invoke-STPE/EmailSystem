@@ -1,4 +1,6 @@
-﻿@page "/"
+﻿
+
+@page "/"
 
 @using Microsoft.AspNetCore.Identity
 @using EmailSystem.Domain.Models
@@ -12,11 +14,18 @@
                 <EmailOverviewComponent UserEmail="@email" />
             </div>
             <div class="col-9 p-5">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#SendEmailModal" @onclick="() => MessageComponent.Open()">
+                    Send Email
+                </button>
+
                 @if (selectedEmail != null)
                 {
                     <EmailDetailComponent Email="selectedEmail" />
-                } else { <h1 class="display-4 text-muted">Select an email, to view the details.</h1> }
+                }
+                else
+                { <h1 class="display-4 text-muted">Select an email, to view the details.</h1>}
             </div>
+            <MessageComponent @ref="MessageComponent" />
         </div>
     </Authorized>
     <NotAuthorized>
@@ -29,6 +38,7 @@
 @code {
     private string email = "";
     private EmailModel selectedEmail = null;
+    private MessageComponent MessageComponent { get; set; }
     protected async override Task OnInitializedAsync()
     {
         base.OnInitialized();

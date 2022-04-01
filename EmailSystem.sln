@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSystem.BL", "EmailSyst
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSystem.BL.Tests", "Tests\EmailSystem.BL.Tests\EmailSystem.BL.Tests.csproj", "{2983F964-4594-470A-BC52-FBB1FD4E52A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSystem.Domain", "EmailSystem.Domain\EmailSystem.Domain.csproj", "{A274F6A1-77EB-4A0A-B04F-366C6C7C1B44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSystem.Domain", "EmailSystem.Domain\EmailSystem.Domain.csproj", "{A274F6A1-77EB-4A0A-B04F-366C6C7C1B44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
