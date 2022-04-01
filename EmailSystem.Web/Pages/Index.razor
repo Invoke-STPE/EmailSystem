@@ -8,11 +8,14 @@
 <AuthorizeView>
     <Authorized>
         <div class="row">
-            <div class="col-3">
+            <div class="col-3" id="email-overview">
                 <EmailOverviewComponent UserEmail="@email" />
             </div>
             <div class="col-9 p-5">
-                <EmailDetailComponent />
+                @if (selectedEmail != null)
+                {
+                    <EmailDetailComponent Email="selectedEmail" />
+                } else { <h1 class="display-4 text-muted">Select an email, to view the details.</h1> }
             </div>
         </div>
     </Authorized>
@@ -25,6 +28,7 @@
 
 @code {
     private string email = "";
+    private EmailModel selectedEmail = null;
     protected async override Task OnInitializedAsync()
     {
         base.OnInitialized();

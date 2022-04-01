@@ -24,11 +24,16 @@ namespace EmailSystem.Domain.Models
 
         public string GetMessageTeaser()
         {
-            if (string.IsNullOrWhiteSpace(Message) && Message.Length >= 10) 
+            if (!string.IsNullOrWhiteSpace(Message) && Message.Length >= 10) 
             {
                 return Message.Substring(0, 10);
             }
             return "";
+        }
+
+        public string GetFullName()
+        {
+            return null;
         }
 
         public override bool Equals(object obj)

@@ -1,5 +1,6 @@
-﻿<div class="row">
-    <h1 class="display-5">Email Header</h1>
+﻿@using EmailSystem.Domain.Models
+<div class="row">
+    <h1 class="display-5">@Email.GetFullName()</h1>
 </div>
 <div class="row justify-content-between">
     <div class="col-9">
@@ -32,5 +33,7 @@
 <MessageComponent @ref="MessageComponent" />
 
 @code {
+    [Parameter]
+    public EmailModel Email { get; set; }
     private MessageComponent MessageComponent { get; set; }
 }
