@@ -7,6 +7,7 @@ using EmailSystem.BL.Services;
 using EmailSystem.BL.Tests.Helpers;
 using System.Linq;
 using EmailSystem.Domain.Models;
+using EmailSystem.Domain.Interfaces;
 
 namespace EmailSystem.BL.Tests
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace EmailSystem.BL.Services
+namespace EmailSystem.Domain.Interfaces
 {
     public interface IUserService
     {

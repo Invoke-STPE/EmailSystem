@@ -11,6 +11,7 @@
     <Authorized>
         <div class="row">
             <div class="col-3" id="email-overview">
+                @email
                 <EmailOverviewComponent UserEmail="@email" />
             </div>
             <div class="col-9 p-5">
@@ -25,7 +26,11 @@
                 else
                 { <h1 class="display-4 text-muted">Select an email, to view the details.</h1>}
             </div>
-            <MessageComponent @ref="MessageComponent" />
+            @if (selectedEmail != null)
+            {
+                // Need a way to pass argumets in here
+            <MessageComponent @ref="MessageComponent" UserEmail="@email" />
+            }
         </div>
     </Authorized>
     <NotAuthorized>

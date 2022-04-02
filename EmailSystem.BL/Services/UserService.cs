@@ -1,6 +1,7 @@
 ﻿
 using EmailSystem.DL.Models;
 using EmailSystem.Domain.Models;
+using EmailSystem.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

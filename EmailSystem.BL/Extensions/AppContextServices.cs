@@ -1,6 +1,7 @@
 ﻿using EmailSystem.DL.Identity;
 using EmailSystem.DL.Models;
 using EmailSystem.BL.Services;
+using EmailSystem.Domain.Interfaces;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
