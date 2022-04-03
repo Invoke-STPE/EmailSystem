@@ -11,18 +11,16 @@
     <Authorized>
         <div class="row">
             <div class="col-3" id="email-overview">
-                @email
                 <EmailOverviewComponent UserEmail="@email" SelectedEmail="SelectEmail" />
             </div>
             <div class="col-9 p-5">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#SendEmailModal" @onclick="() => MessageComponent.Open()">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#SendEmailModal" >
                     Send Email
                 </button>
 
-                    @*<EmailDetailComponent Email="selectedEmail" />*@
                 @if (selectedEmail != null)
                 {
-                    <p>Somethings there</p>
+                    <EmailDetailComponent Email="selectedEmail" />
                 }  
 
             </div>
@@ -38,7 +36,6 @@
 @code {
     private string email = "";
     private EmailModel selectedEmail = null;
-    private MessageComponent MessageComponent { get; set; }
 
     protected async override Task OnInitializedAsync()
     {

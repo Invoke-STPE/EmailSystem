@@ -10,12 +10,14 @@
                 <img src="/Images/profile_picture.svg" style="width:5.5rem" />
             </div>
             <div class="col-3 ">
-                <h3><InputText @bind-Value="Email.Sender.Email" class="form-control" type="email" /></h3>
                 <div>
-                    @Email.Sender.Email
+                    <p class="text-secondary">For: @email.Recipient.Email</p>
                 </div>
                 <div>
-                    <p class="text-muted text-secondary">For: @Email.Recipient.Email</p>
+                    @email.Sender.Email
+                </div>
+                <div>
+                    <p class="text-muted text-secondary">For: @email.Recipient.Email</p>
                 </div>
             </div>
         </div>
@@ -34,6 +36,12 @@
 
 @code {
     [Parameter]
-    public EmailModel Email { get; set; } = new EmailModel();
-    //private MessageComponent MessageComponent { get; set; }
+    public EmailModel Email { get; set; }
+    private EmailModel email;
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        email = Email;
+    }
 }
