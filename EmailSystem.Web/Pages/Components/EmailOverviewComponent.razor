@@ -6,7 +6,7 @@
     {
         @foreach (EmailModel email in _emails)
         {
-            <EmailComponent Email="email"  />
+            <EmailComponent Email="email"  SelectedEmail="SelectEmail" />
         }
     } else { <p class="text-muted">No Emails to display</p>}
 </div>
@@ -14,6 +14,10 @@
 @code {
     [Parameter]
     public string UserEmail { get; set; }
+
+    [Parameter]
+    public EventCallback<EmailModel> SelectedEmail { get; set; }
+
     private ICollection<EmailModel> _emails = new List<EmailModel>();
 
     protected override void OnParametersSet()
@@ -22,5 +26,8 @@
     }
 
     // TODO: Create a select email method.
-
+    private void SelectEmail(EmailModel email)
+    {
+        SelectedEmail.InvokeAsync(email);
+    }
 }

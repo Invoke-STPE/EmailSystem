@@ -1,5 +1,5 @@
 ﻿@using EmailSystem.Domain.Models
-<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+<a href="#" class="list-group-item list-group-item-action flex-column align-items-start" @onclick="SelectEmail">
     <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">@displayEmail.Sender.Email</h5>
         <small>@displayEmail.SentDate</small>
@@ -12,6 +12,8 @@
 @code {
     [Parameter]
     public EmailModel Email { get; set; }
+    [Parameter]
+    public EventCallback<EmailModel> SelectedEmail { get; set; }
 
     private EmailModel displayEmail = new EmailModel();
 
@@ -25,5 +27,10 @@
     {
         base.OnParametersSet();
         displayEmail = Email;
+    }
+
+    private void SelectEmail()
+    {
+        SelectedEmail.InvokeAsync(Email);
     }
 }

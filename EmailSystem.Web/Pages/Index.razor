@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-3" id="email-overview">
                 @email
-                <EmailOverviewComponent UserEmail="@email" />
+                <EmailOverviewComponent UserEmail="@email" SelectedEmail="SelectEmail" />
             </div>
             <div class="col-9 p-5">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#SendEmailModal" @onclick="() => MessageComponent.Open()">
@@ -20,7 +20,10 @@
                 </button>
 
                     @*<EmailDetailComponent Email="selectedEmail" />*@
-                
+                @if (selectedEmail != null)
+                {
+                    <p>Somethings there</p>
+                }  
 
             </div>
         </div>
@@ -36,6 +39,7 @@
     private string email = "";
     private EmailModel selectedEmail = null;
     private MessageComponent MessageComponent { get; set; }
+
     protected async override Task OnInitializedAsync()
     {
         base.OnInitialized();
@@ -46,6 +50,10 @@
             user = _userService.Read(authState.User.Identity.Name);
             email = user.Email;
         }
+    }
+    private void SelectEmail(EmailModel email)
+    {
+        selectedEmail = email;
     }
 }
 
