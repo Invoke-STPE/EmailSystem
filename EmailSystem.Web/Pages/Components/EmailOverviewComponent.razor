@@ -16,14 +16,11 @@
     public string UserEmail { get; set; }
     private ICollection<EmailModel> _emails = new List<EmailModel>();
 
-    //protected override async Task OnInitializedAsync()
-    //{
-    //    _emails = await _userService.GetReceivedMails(UserEmail);
-    //    return base.OnInitializedAsync();
-    //}
-    protected override async  Task OnParametersSetAsync()
+    protected override void OnParametersSet()
     {
         _emails = _userService.GetReceivedMails(UserEmail);
     }
+
+    // TODO: Create a select email method.
 
 }

@@ -40,12 +40,14 @@ namespace EmailSystem.BL.Services
 
         public ICollection<EmailModel> GetReceivedMails(string email)
         {
-            var userId = Read(email).Id;
-            var receivedEmails = from dbEmail in _context.Emails
-                         .Where(e => e.RecipientId == userId)
-                         .Include(e => e.Sender)
-                                 select dbEmail;
-            //List<EmailModel> receivedEmails = await _context.Users.Where(user => user.Email.ToLower() == email.ToLower()).Select(user => user.ReceivedEmails)
+            var user = Read(email);
+
+            var userId = user != null ? user.Id : ""; // Conditional checks if user exists. 
+       
+                var receivedEmails = from dbEmail in _context.Emails
+                             .Where(e => e.RecipientId == userId)
+                             .Include(e => e.Sender)
+                                     select dbEmail; 
 
             return receivedEmails.ToList();
 
