@@ -1,6 +1,6 @@
 ﻿@using EmailSystem.Domain.Models
 <div class="row">
-    <h1 class="display-5">Steven</h1>
+    <h1 class="display-5">@email.Subject</h1>
 </div>
 <div class="row justify-content-between">
         
@@ -10,9 +10,6 @@
                 <img src="/Images/profile_picture.svg" style="width:5.5rem" />
             </div>
             <div class="col-3 ">
-                <div>
-                    <p class="text-secondary">For: @email.Recipient.Email</p>
-                </div>
                 <div>
                     @email.Sender.Email
                 </div>
@@ -32,7 +29,6 @@
         @Email.Message
     </div>
 </div>
-@*<MessageComponent @ref="MessageComponent" />*@
 
 @code {
     [Parameter]
