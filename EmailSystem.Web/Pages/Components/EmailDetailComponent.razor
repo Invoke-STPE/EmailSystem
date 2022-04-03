@@ -1,14 +1,27 @@
 ﻿@using EmailSystem.Domain.Models
 <div class="row">
-    <h1 class="display-5">@Email.GetFullName()</h1>
+    <h1 class="display-5">Steven</h1>
 </div>
 <div class="row justify-content-between">
         
     <div class="col-9">
-        <EmailSenderComponent />
+        <div class="row">
+            <div class="col-1 pl-0 pr-2">
+                <img src="/Images/profile_picture.svg" style="width:5.5rem" />
+            </div>
+            <div class="col-3 ">
+                <h3><InputText @bind-Value="Email.Sender.Email" class="form-control" type="email" /></h3>
+                <div>
+                    @Email.Sender.Email
+                </div>
+                <div>
+                    <p class="text-muted text-secondary">For: @Email.Recipient.Email</p>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-1">
-        <button class="btn btn-outline-primary" @onclick="() => MessageComponent.Open()"><span class="oi oi-arrow-left"> Reply</span></button>
+        <button class="btn btn-outline-primary"><span class="oi oi-arrow-left"> Reply</span></button>
     </div>
 </div>
 <hr />
@@ -17,10 +30,10 @@
         @Email.Message
     </div>
 </div>
-<MessageComponent @ref="MessageComponent" />
+@*<MessageComponent @ref="MessageComponent" />*@
 
 @code {
     [Parameter]
-    public EmailModel Email { get; set; }
-    private MessageComponent MessageComponent { get; set; }
+    public EmailModel Email { get; set; } = new EmailModel();
+    //private MessageComponent MessageComponent { get; set; }
 }

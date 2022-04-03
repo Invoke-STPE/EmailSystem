@@ -1,15 +1,29 @@
 ﻿@using EmailSystem.Domain.Models
 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">@Email.Sender.Email</h5>
-        <small>@Email.SentDate</small>
+        <h5 class="mb-1">@displayEmail.Sender.Email</h5>
+        <small>@displayEmail.SentDate</small>
     </div>
-    <p class="mb-1">Email Subject</p>
-    <small>@Email.GetMessageTeaser()</small>
+    <p class="mb-1">@displayEmail.Subject</p>
+    <small>@displayEmail.GetMessageTeaser()</small>
 </a>
 
 
 @code {
     [Parameter]
     public EmailModel Email { get; set; }
+
+    private EmailModel displayEmail = new EmailModel();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        displayEmail = new EmailModel();
+    }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        displayEmail = Email;
+    }
 }

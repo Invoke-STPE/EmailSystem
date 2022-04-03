@@ -1,11 +1,11 @@
-﻿
-
-@page "/"
+﻿@page "/"
 
 @using Microsoft.AspNetCore.Identity
 @using EmailSystem.Domain.Models
+@using EmailSystem.Domain.Interfaces
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject UserManager<ApplicationUser> _userManager
+@inject IUserService _userService  
 
 <AuthorizeView>
     <Authorized>
@@ -19,18 +19,15 @@
                     Send Email
                 </button>
 
-                @if (selectedEmail != null)
-                {
-                    <EmailDetailComponent Email="selectedEmail" />
-                }
-                else
-                { <h1 class="display-4 text-muted">Select an email, to view the details.</h1>}
+                    @*<EmailDetailComponent Email="selectedEmail" />*@
+                
+
             </div>
-            @if (selectedEmail != null)
-            {
+            @*@if (selectedEmail != null)
+            {*@
                 // Need a way to pass argumets in here
-            <MessageComponent @ref="MessageComponent" UserEmail="@email" />
-            }
+            @*<MessageComponent @ref="MessageComponent" UserEmail="@email" />*@
+          
         </div>
     </Authorized>
     <NotAuthorized>
@@ -51,7 +48,7 @@
         ApplicationUser user = null;
         if (authState.User.Identity.IsAuthenticated)
         {
-            user = await _userManager.FindByNameAsync(authState.User.Identity.Name);
+            user = _userService.Read(authState.User.Identity.Name);
             email = user.Email;
         }
     }

@@ -5,20 +5,20 @@
 @inject UserManager<ApplicationUser> _userManager
 @inject IUserService _userService 
 
-<EditForm Model="@newEmail">
+@*<EditForm Model="@newEmail" OnValidSubmit="SendEmail">*@
     <div class="modal @ModalClass" tabindex="-1" role="dialog" style="display:@ModalDisplay">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="row">
                         <div class="col-12">
-                            <InputText @bind-Value="newEmail.Sender.Email" class="form-control" type="email" />
+                            @*<InputText @bind-Value="newEmail.Sender.Email" class="form-control" type="email" />*@
                         </div>
                         <div class="col-12">
-                            <InputText @bind-Value="newEmail.Recipient.Email" class="form-control" type="email" placeholder="Recipent@email.com" />
+                            @*<InputText @bind-Value="newEmail.Recipient.Email" class="form-control" type="email" placeholder="Recipent@email.com" />*@
                         </div>
                         <div class="col-12">
-                            <InputText @bind-Value="newEmail.Subject" class="form-control" type="email" placeholder="Subject" />
+                            @*<InputText @bind-Value="newEmail.Subject" class="form-control" type="email" placeholder="Subject" />*@
                         </div>
                     </div>
                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal" @onclick="() => Close()" aria-label="Send">
@@ -27,17 +27,17 @@
                 </div>
                 <div class="modal-body">
 
-                    <InputTextArea @bind-Value="newEmail.Message" />
+                    @*<InputTextArea @bind-Value="newEmail.Message" />*@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" @onclick="() => SendEmail()">Send</button>
+                    <button type="submit" class="btn btn-primary">Send</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" @onclick="() => Close()">Discard</button>
                 </div>
             </div>
         </div>
     </div>
-</EditForm>
+@*</EditForm>*@
 
 @if (ShowBackdrop)
 {

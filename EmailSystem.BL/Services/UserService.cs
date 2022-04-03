@@ -38,17 +38,16 @@ namespace EmailSystem.BL.Services
 
         }
 
-        public async Task<ICollection<EmailModel>> GetReceivedMails(string email)
+        public ICollection<EmailModel> GetReceivedMails(string email)
         {
-
-            var receivedEmails = await (from user in _context.Users
-                         .Where(user => user.Email.ToLower() == email.ToLower())
-                         .Include(user => user.ReceivedEmails)
-                                        from emailReceived in user.ReceivedEmails
-                                        select emailReceived).ToListAsync();
+            var userId = Read(email).Id;
+            var receivedEmails = from dbEmail in _context.Emails
+                         .Where(e => e.RecipientId == userId)
+                         .Include(e => e.Sender)
+                                 select dbEmail;
             //List<EmailModel> receivedEmails = await _context.Users.Where(user => user.Email.ToLower() == email.ToLower()).Select(user => user.ReceivedEmails)
 
-            return receivedEmails;
+            return receivedEmails.ToList();
 
         }
 

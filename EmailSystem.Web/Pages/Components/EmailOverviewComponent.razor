@@ -6,7 +6,7 @@
     {
         @foreach (EmailModel email in _emails)
         {
-            <EmailComponent  />
+            <EmailComponent Email="email"  />
         }
     } else { <p class="text-muted">No Emails to display</p>}
 </div>
@@ -21,9 +21,9 @@
     //    _emails = await _userService.GetReceivedMails(UserEmail);
     //    return base.OnInitializedAsync();
     //}
-    protected override async  Task OnInitializedAsync()
+    protected override async  Task OnParametersSetAsync()
     {
-        _emails = await _userService.GetReceivedMails(UserEmail);
+        _emails = _userService.GetReceivedMails(UserEmail);
     }
 
 }
