@@ -53,13 +53,22 @@ namespace EmailSystem.BL.Services
 
         }
 
-        public void SendEmail(string senderEmail, string recipentEmail, EmailModel email)
+        public void SendEmail(string senderEmail, string recipentEmail, string subject, string message)
         {
+            
             var recipentUser = Read(recipentEmail);
             var senderUser = Read(senderEmail);
+            EmailModel email = new EmailModel()
+            {
+                Recipient = recipentUser,
+                Sender = senderUser,
+                RecipientId = recipentUser.Id,
+                SenderID = senderUser.Id,
+                Subject = subject,
+                Message = message
+            };
 
-            email.RecipientId = recipentUser.Id;
-            email.SenderID = senderUser.Id;
+
 
             _context.Emails.Add(email);
             _context.SaveChanges();

@@ -9,6 +9,6 @@ namespace EmailSystem.Domain.Interfaces
         ICollection<EmailModel> GetReceivedMails(string email);
         ICollection<EmailModel> GetSentMails(string email);
         ApplicationUser Read(string email);
-        void SendEmail(string senderEmail, string recipentEmail, EmailModel email);
+        void SendEmail(string senderEmail, string recipentEmail, string subject, string message);
     }
 }
